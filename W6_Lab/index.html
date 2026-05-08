@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Tyler Silvia">
+    <meta name="description" content="W6 Lab">
+
+    <title>W6 Lab</title>
+</head>
+<body>
+
+    <script>
+    // Gather input from user
+    var hourlyPay = Number(prompt("Enter your hourly pay:"));
+    var hoursWorked = Number(prompt("Enter total hours worked for the 2-week period:"));
+
+    // Tax rate
+    var taxRate = 0.20;
+
+    // Calculations
+    var grossPay = hourlyPay * hoursWorked;
+    var taxAmount = grossPay * taxRate;
+    var netPay = grossPay - taxAmount;
+
+    // Format values
+    var grossFormatted = grossPay.toFixed(2);
+    var taxFormatted = taxAmount.toFixed(2);
+    var netFormatted = netPay.toFixed(2);
+
+    // Console output
+    console.log("Gross Pay: $" + grossFormatted);
+    console.log("Uncle Sam's Share: $" + taxFormatted);
+    console.log("Net Pay: $" + netFormatted);
+
+    // Alert output
+    alert(
+        "Gross Pay: $" + grossFormatted + "\n" +
+        "Uncle Sam's Share: $" + taxFormatted + "\n" +
+        "Net Pay: $" + netFormatted
+    );
+    </script>
+
+</body>
+</html>
