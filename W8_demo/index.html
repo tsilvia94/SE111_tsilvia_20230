@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Week 8 | JavaScript Arrays and Objects</h1>
+
+    <div id="output">
+
+
+    </div>
+
+    <script>
+        //ARRAYS--------------------------------------------------
+
+        var people = [
+            `Katie`,
+            `Tyler`,
+            `Ethan`
+        ]
+        console.log(`${people}`)    //entire collection of data
+        console.log(`${people[0]}`) //one value within array
+        console.log(`${people.length}`) //array property length --> num of items in an array 
+        console.log(`${people[people.length - 1]}`) //last value in array
+
+        var firstPerson = people[0]
+        console.log(`${firstPerson}`)   //matches log from ln 25
+
+
+        //add a person to the array without using index
+        people.push(`Arman`)
+        console.log(`${people}`)
+
+        //get value from user to add to array
+        people.push(prompt(`Enter a name to add to PEOPLE array: `))
+        console.log(`${people}`)
+        
+        //PARRALLEL ARRAYS-------------------------------
+        var color = [
+            `grey`,
+            `red`,
+            `green`,
+            `red`,
+            `neon beige`
+        ]
+
+
+        /*var age = []
+
+        for(let index = 0; index < people.length; index++)
+        {
+            //index++ --> index += 1 --> index = index + 1
+            console.log(`${people[index]}'s favorite color is ${color[index]}!`)
+            age.push(
+                prompt(`How old is ${people[index]}?: `)
+            )
+        }
+
+        for(let index = 0; index < people.length; index++)
+        {
+             console.log(`${people[index]} is ${age[index]} and their favorite color is ${color[index]}!`)
+        }*/  
+
+        //add our people and color data to the HTML page, div with id = output
+
+        var output = document.querySelector(`#output`)
+
+        for(let i = 0; i < people.length; i++)
+        {
+            output.innerHTML += `<p>${people[i]}'s favorite color is ${color[i]}'</p>`
+        }
+
+        //OBJECTS-------------------------------------------------------
+
+        var person1 = {
+            first: `Tyler`,
+            last: `Silvia`,
+            age: `32`,
+            pets: true,
+            greeting: function(){
+                alert(`Hello from ${this.first}!`)
+            },
+            classes: [`SE111`, `MA121`]
+        }
+
+        console.log(`${person1}`)
+        console.dir(person1)
+        console.log(`${person1.first}`)
+        person1.car = `Nissan Murano`
+        console.log(`${person1}`)
+
+        //processing through all properties in an object--------------------------
+
+        for(let key in person1)
+        {
+            //for each key (property) in the object
+            console.log(`${key}: ${person1[key]}`)
+        }
+        alert(`Watch what happens next`)
+        //call the objects function --> accessing a METHOD!
+
+        person1.greeting()
+
+        var person2 = {
+            first: `Christopher`,
+            last: `Tavarez`,
+            age: `103`,
+            pets: false,
+            greeting: function(){
+                alert(`Hello from ${this.first}!`)
+            },
+            classes: [`SE111`, `AI240`, `BA110`]
+        }
+
+        for(let key in person2)
+        {
+            //for each key (property) in the object
+            console.log(`${key}: ${person2[key]}`)
+        }
+
+        //PUTTING IT ALL TOGETHER --> a data structure populated with other daya structures
+        //an ARRAY of Objects --> array is the outer structure, objects are the inner
+        var humans = [
+            person1,
+            person2
+        ]
+
+        var newOutput = ``
+
+
+        for(let i = 0; i<humans.length; i++)
+        {
+            //this loop controls the array data(which object are we looking at?)
+            newOutput += `<h3>INFO FOR: ${humans[i].first}: </h3>`
+
+            for(let key in humans[i])
+            {
+                //this inner loop controls each property within the current object of the array
+                newOutput += `<p><b>${key}:</b> ${humans[i][key]}</p>`
+
+            }
+
+            newOutput += `<hr>`
+            
+        }
+
+        //write it to the HTML Page
+
+        document.querySelector(`#output`).innerHTML += newOutput
+
+    </script>
+    
+</body>
+</html>
